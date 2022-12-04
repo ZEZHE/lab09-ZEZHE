@@ -11,6 +11,21 @@ using namespace std;
  *
  *You should provide a recursive solution*/
 bool isPalindrome(const string s1){
-    //STUB: Replace the following with the correct code.
-    return true;
+    // base case 1: string only contains one character, always return true.
+    if (s1.length() == 1) {
+        return true;
+    }
+    // base case 2: string only contains two characters.
+    if (s1.length() == 2) {
+        if (tolower(s1[0]) == tolower(s1[1])) {
+            return true;
+        }
+        return false;
+    }
+    // return false if head and tail do not match.
+    if(tolower(s1[0]) != tolower(s1[s1.length()-1])) {
+        return false;
+    }
+    // recursive case: check the substring containing middle elements.
+    return isPalindrome(s1.substr(1,s1.length()-2));
 }
