@@ -160,14 +160,16 @@ Node* recursiveSplice(Node *head1, Node *head2) {
     return head2;
   }
   // base case 2: both lists only contain one element each.
-  if (head2->next == nullptr && head1->next == nullptr) {
+  if (head2->next == nullptr) {
+    head2->next = head1->next;
     head1->next = head2;
     return head1;
   }
-  // recursive case: 
+  // recursive case: splice the second sub linked list into the first sub linked list.
   Node* p = recursiveSplice(head1->next, head2->next);
-  head2->next = p;
+  head2->next = p; 
   head1->next = head2;
+  // make sure the linked list strart with list 1 and alternate between list 1 and 2.
 
   return head1;
 }
