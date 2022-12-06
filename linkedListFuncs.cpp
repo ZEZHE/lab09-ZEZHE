@@ -159,13 +159,10 @@ Node* recursiveSplice(Node *head1, Node *head2) {
   if (!head1) {
     return head2;
   }
-  if (!head1->next && !head2->next) {
-    head1->next = head2;
+  if (!head2) {
     return head1;
   }
-  // base case 2: list 2 only contains one element.
-  if (head2->next == nullptr) {
-    head2->next = head1->next;
+  if (!head1->next && !head2->next) {
     head1->next = head2;
     return head1;
   }
